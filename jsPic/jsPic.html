@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<style>
+	body{
+		font-family:"Arial","微软雅黑";
+		color:#333;
+		background-color:#ccc;
+		margin:1em 10%;
+	}
+	img{
+		height:450px;
+		width:500px;
+		display:block;
+		clear:both;
+	}
+	h1{
+		color:#333;
+	}
+	a{
+		color:#c60;
+		font-weight:bold;
+		text-decoration:none;
+	}
+	ul{
+		padding:0px;
+	}
+	li{
+		float:left;
+		padding:1em;
+		list-style:none;
+	}
+</style>
+</head>
+
+<body>
+	<h1 >Snapshtos</h1>
+	<ul>
+		<li><a href="images/king.jpg" onclick="showPic(this);return false;" title="你必加冕为王">你必加冕为王</a></li>
+		<li><a href="images/zhangxueyou.jpg" onclick="showPic(this); return false;" title="等我一巴掌拍下去">等我一巴掌拍下去</a></li>
+		<li><a href="images/sord.jpg" onclick="showPic(this); return false;" title="我可能不是你的王子">我可能不是你的王子</a></li>
+		<li><a href="images/knife.jpg" onclick="showPic(this); return false;" title="小哥割包皮吗">小哥割包皮吗</a></li>
+		<img id="placeholder" src="images/sord.jpg"/>
+	</ul>
+	<p id="description">Choose an image.</p>
+	<script>
+		function showPic(whichPic){
+			var source=whichPic.getAttribute("href");
+			var placeholder=document.getElementById("placeholder");
+			placeholder.setAttribute("src",source);
+			var gettitle=whichPic.getAttribute("title");
+			var description=document.getElementById("description");
+			description.childNodes[0].nodeValue=gettitle;
+		}
+		/*function count_childen(){
+		var body_element=document.getElementsByTagName("body")[0];
+		alert(body_element.nodeType);		
+		}
+		window.onload=count_childen();*/
+	</script>
+</body>
+</html> 
