@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<style>
+	body{
+		font-family:"Arial","微软雅黑";
+		color:#333;
+		background-color:#ccc;
+		margin:1em 10%;
+	}
+	img{
+		height:333px;
+		width:500px;
+		display:block;
+		clear:both;
+	}
+	h1{
+		color:#333;
+	}
+	a{
+		color:#c60;
+		font-weight:bold;
+		text-decoration:none;
+	}
+	ul{
+		padding:0px;
+	}
+	li{
+		float:left;
+		padding:1em;
+		list-style:none;
+	}
+</style>
+</head>
+
+<body>
+	<h1 >Snapshtos</h1>
+	<ul id="imagegallery">
+		<li><a href="images/bear.jpg" title="bear">bear</a></li>
+		<li><a href="images/cat.jpg" title="cat">cat</a></li>
+		<li><a href="images/leaf.jpg" title="leaf">leaf</a></li>
+		<li><a href="images/little.jpg" return false;" title="little">little</a></li>
+		<img id="placeholder" src="images/leaf.jpg"/>
+	</ul>
+	<p id="description">Choose an image.</p>
+	<script>
+		function preparegallery(){
+			if(!document.getElementsByTagName)return false;
+			if(!document.getElementById)return false;
+			if(!document.getElementById("imagegallery"))return false;
+			var gallery=document.getElementById("imagegallery");
+			var links=gallery.getElementsByTagName("a");
+			for(var i=0;i<links.length;i++){
+				links[i].onclick=function(){
+					return showPic(this)?false:true;
+				}
+			}	
+		}
+		
+		function addLoadEvent(func){
+			var oldonload=window.onload;
+			if(typeof window.onload!="function"){
+				window.onload=func;
+			}else{
+				window.onload=function(){
+					oldonload();
+					func();
+				}
+			}
+		}
+		addLoadEvent(preparegallery);
+		
+		function showPic(whichPic){
+			if(!document.getElementById("placeholder"))return false;
+			var source=whichPic.getAttribute("href");
+			var placeholder=document.getElementById("placeholder");
+			if(placeholder.nodeName!="IMG") return false;
+			placeholder.setAttribute("src",source);
+			if(document.getElementById("description")){
+				var gettitle=whichPic.getAttribute("title")?whichPic.getAttribute("title"):"";
+				var description=document.getElementById("description");
+				if(description.firstChild.nodeType==3){
+					description.childNodes[0].nodeValue=gettitle;
+				}
+			}
+			return true;
+		}
+	</script>
+</body>
+</html> 
