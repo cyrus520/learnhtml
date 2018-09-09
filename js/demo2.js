@@ -1,0 +1,40 @@
+var app=new Vue({
+	el:"#app",
+	data:{
+		url:'http://baidu.com',
+		img:'images/myself.jpg',
+		isActive:true,
+		name:"whh",
+		sex:"male",
+		des:null,
+		role:'hr',
+		math:23,
+		physics:44,
+		english:32
+	},
+	computed:{
+		sum:function(){
+			return this.math+this.english+this.physics
+		},
+		avg:function(){
+			return Math.round(this.sum/3)
+		}
+	},
+	methods:{
+		onClick:function(){
+			console.log("click")
+		},
+		onMouseover:function(){
+			console.log("onMouseover")
+		},
+		onMouseleave:function(){
+			console.log("onMouseleave")
+		},
+		onSubmit:function(){
+			console.log("onSubmit")
+		},
+		onEnter:function(){
+			console.log("onEnter")
+		}
+	}
+});
